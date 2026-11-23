@@ -1,0 +1,1175 @@
+{
+  "meta": {
+    "app": "Seasoned Together",
+    "version": "0.2-prototype",
+    "showPrototypeNotes": false,
+    "notes": "All content for the prototype. Onboarding shows `conditions`; the user's selection picks the scenario whose `conditions` match (Arthritis + Back pain → the combined scenario). `camera: true` scenarios get the camera set-up step and automatic step detection while cooking. A step's optional `watch` ({kind: boil | pressure | preheat, minutes}) is a camera-estimated wait shown before any timer.",
+    "photoNotes": "All photos are free Unsplash images (Unsplash License, no Unsplash+), checked by eye against their recipe. Each scenario's `cameraPhoto` is the one generic home stove its camera view shows for the whole session."
+  },
+  "conditions": [
+    {
+      "id": "arthritis",
+      "label": "Arthritis",
+      "sub": "Gripping knives, opening jars, twisting lids",
+      "icon": "back_hand"
+    },
+    {
+      "id": "back-pain",
+      "label": "Back pain",
+      "sub": "Bending to the oven, lifting pots, standing long",
+      "icon": "accessibility_new"
+    },
+    {
+      "id": "knee-pain",
+      "label": "Knee pain",
+      "sub": "Standing, squatting to low cupboards, kneeling",
+      "icon": "elderly"
+    }
+  ],
+  "otherInput": {
+    "voiceSample": "I have arthritis in my hands and my lower back hurts when I bend down to the oven.",
+    "keywords": {
+      "arthritis": [
+        "arthritis",
+        "hand",
+        "hands",
+        "finger",
+        "fingers",
+        "grip",
+        "jar",
+        "jars",
+        "lid",
+        "lids",
+        "chopping",
+        "knuckle"
+      ],
+      "back-pain": [
+        "back",
+        "spine",
+        "bending",
+        "bend",
+        "lifting",
+        "lift",
+        "sciatica"
+      ],
+      "knee-pain": [
+        "knee",
+        "knees",
+        "standing",
+        "stand",
+        "squat",
+        "squatting",
+        "kneel",
+        "kneeling"
+      ]
+    }
+  },
+  "scenarios": [
+    {
+      "id": "arthritis",
+      "label": "Arthritis",
+      "shortLabel": "Hands & grip",
+      "onboardingBlurb": "Opening jars, gripping knives or twisting lids is painful.",
+      "persona": {
+        "name": "Margaret",
+        "age": 72,
+        "bio": "Retired school teacher who loves feeding her grandkids on Sundays. Rheumatoid arthritis in both hands makes fine motor tasks hard.",
+        "householdSize": 2
+      },
+      "constraints": [
+        {
+          "id": "arth-1",
+          "title": "Trouble gripping knives",
+          "detail": "Chopping hard vegetables like onions and carrots causes finger pain."
+        },
+        {
+          "id": "arth-2",
+          "title": "Can't open jars or twist lids",
+          "detail": "Screw tops, cans and tight lids are hard to open."
+        },
+        {
+          "id": "arth-3",
+          "title": "Morning stiffness",
+          "detail": "Hands are stiffest before 10am, so she cooks later in the day."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Rocker knife",
+          "why": "You rock it instead of sawing, so you need less grip strength."
+        },
+        {
+          "name": "Under-cabinet jar opener",
+          "why": "Twists lids using your arm instead of your fingers."
+        },
+        {
+          "name": "Wide-grip peeler",
+          "why": "A thick, soft handle spreads the pressure across your palm."
+        }
+      ],
+      "tips": [
+        "Buy pre-chopped onions and frozen diced vegetables. They taste the same and save your hands.",
+        "Soak your hands in warm water for a minute before cooking to ease stiffness."
+      ],
+      "recipes": [
+        {
+          "id": "arth-sheetpan-chicken",
+          "title": "Sheet-Pan Lemon Chicken & Vegetables",
+          "photo": "https://images.unsplash.com/photo-1638905100776-d8cdf6307f16?auto=format&fit=crop&w=800&q=70",
+          "folder": "Dinners",
+          "time": 45,
+          "servings": 2,
+          "ingredients": [
+            "2 chicken thighs",
+            "1 lemon",
+            "2 carrots",
+            "1 red onion",
+            "1 cup baby potatoes",
+            "2 tbsp olive oil",
+            "1 tsp dried thyme",
+            "Salt & pepper"
+          ],
+          "steps": [
+            {
+              "text": "Preheat the oven to 425°F (220°C).",
+              "timerMinutes": 10
+            },
+            {
+              "text": "Peel and chop the carrots, onion and potatoes into bite-size pieces.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Squeeze the lemon over the chicken with the oil, thyme, salt and pepper.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Spread everything on a sheet pan and roast.",
+              "timerMinutes": 35
+            },
+            {
+              "text": "Rest for 5 minutes before serving.",
+              "timerMinutes": 5
+            }
+          ],
+          "simplified": {
+            "summary": "No chopping or squeezing. Everything goes on the pan straight from the bag.",
+            "steps": [
+              {
+                "text": "Preheat the oven to 425°F (220°C). Line the pan with foil so cleanup is easy.",
+                "timerMinutes": 10
+              },
+              {
+                "text": "Tip the pre-cut vegetable mix and baby potatoes straight from the bag onto the pan.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Lay the chicken on top. Drizzle with oil from a squeeze bottle and sprinkle with bottled lemon juice and thyme.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Slide the pan in using both hands and roast.",
+                "timerMinutes": 35
+              },
+              {
+                "text": "Rest for 5 minutes, then serve from the pan.",
+                "timerMinutes": 5
+              }
+            ],
+            "swaps": [
+              {
+                "from": "Whole carrots & onion",
+                "to": "Pre-cut stir-fry or roasting veg mix",
+                "why": "No knife work at all"
+              },
+              {
+                "from": "Fresh lemon",
+                "to": "Bottled lemon juice",
+                "why": "No squeezing or cutting"
+              },
+              {
+                "from": "Glass oil bottle",
+                "to": "Squeeze bottle of oil",
+                "why": "Easier to grip than a twist cap"
+              }
+            ],
+            "prepAhead": [
+              "Ask the butcher to trim the chicken",
+              "Keep a squeeze bottle of oil by the stove"
+            ]
+          }
+        },
+        {
+          "id": "arth-tomato-soup",
+          "title": "Creamy Tomato Basil Soup",
+          "photo": "https://images.unsplash.com/photo-1692776407523-8f3c4678ad36?auto=format&fit=crop&w=800&q=70",
+          "folder": "Soups",
+          "time": 30,
+          "servings": 4,
+          "ingredients": [
+            "2 cans whole tomatoes",
+            "1 onion",
+            "3 garlic cloves",
+            "2 cups vegetable broth",
+            "½ cup cream",
+            "Fresh basil",
+            "1 tbsp butter"
+          ],
+          "steps": [
+            {
+              "text": "Dice the onion and mince the garlic.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Melt the butter and soften the onion and garlic.",
+              "timerMinutes": 5
+            },
+            {
+              "text": "Open the cans and add the tomatoes and broth.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Simmer.",
+              "timerMinutes": 15
+            },
+            {
+              "text": "Blend until smooth, then stir in the cream and basil.",
+              "timerMinutes": 0
+            }
+          ],
+          "simplified": {
+            "summary": "Uses cartons and frozen garlic, so there are no cans or chopping. A stick blender does the blending.",
+            "steps": [
+              {
+                "text": "Melt the butter and add 1 cup of frozen diced onion and 1 tsp of jarred garlic, opened with your jar opener.",
+                "timerMinutes": 5
+              },
+              {
+                "text": "Pour in the carton of crushed tomatoes and the carton of broth.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Simmer with the lid off.",
+                "timerMinutes": 15
+              },
+              {
+                "text": "Blend in the pot with a stick blender, holding it with both hands.",
+                "timerMinutes": 2
+              },
+              {
+                "text": "Stir in the cream and tear in the basil with your fingers.",
+                "timerMinutes": 0
+              }
+            ],
+            "swaps": [
+              {
+                "from": "Canned tomatoes",
+                "to": "Carton crushed tomatoes",
+                "why": "No can opener needed"
+              },
+              {
+                "from": "Fresh onion & garlic",
+                "to": "Frozen diced onion + jarred garlic",
+                "why": "No knife work"
+              },
+              {
+                "from": "Countertop blender",
+                "to": "Stick blender",
+                "why": "No lifting or pouring hot soup"
+              }
+            ],
+            "prepAhead": [
+              "Keep cartons in a low cupboard",
+              "Freeze leftovers in single portions"
+            ]
+          }
+        },
+        {
+          "id": "arth-overnight-oats",
+          "title": "Berry Overnight Oats",
+          "photo": "https://images.unsplash.com/photo-1652799605997-4349a6bb82c9?auto=format&fit=crop&w=800&q=70",
+          "folder": "Breakfast",
+          "time": 5,
+          "servings": 1,
+          "ingredients": [
+            "½ cup rolled oats",
+            "½ cup milk",
+            "¼ cup yogurt",
+            "1 tsp honey",
+            "Handful of berries"
+          ],
+          "steps": [
+            {
+              "text": "Combine the oats, milk, yogurt and honey in a mason jar.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Screw on the lid and shake well.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Refrigerate overnight.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Top with berries in the morning.",
+              "timerMinutes": 0
+            }
+          ],
+          "simplified": {
+            "summary": "A bowl with a snap-on lid replaces the screw-top jar.",
+            "steps": [
+              {
+                "text": "Add the oats, milk, yogurt and honey to a container with a snap-on lid.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Stir with a fat-handled spoon. No shaking needed.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Press the lid down with your palm and refrigerate overnight.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Add frozen berries straight from the bag in the morning.",
+                "timerMinutes": 0
+              }
+            ],
+            "swaps": [
+              {
+                "from": "Mason jar",
+                "to": "Snap-lid container",
+                "why": "No twisting"
+              },
+              {
+                "from": "Shaking",
+                "to": "Stirring",
+                "why": "Less wrist and finger strain"
+              }
+            ],
+            "prepAhead": [
+              "Make 3 at once on a good-hands day"
+            ]
+          }
+        }
+      ],
+      "conditions": [
+        "arthritis"
+      ],
+      "camera": false,
+      "cameraPhoto": "https://images.unsplash.com/photo-1580929753603-10519c6e480a?auto=format&fit=crop&w=800&q=70"
+    },
+    {
+      "id": "back-pain",
+      "label": "Back Pain",
+      "shortLabel": "Bending & lifting",
+      "onboardingBlurb": "Bending to the oven, lifting pots or standing for long is hard.",
+      "persona": {
+        "name": "Robert",
+        "age": 68,
+        "bio": "Former carpenter who took over the cooking when his wife's eyesight declined. Lower back pain after 15 minutes of standing.",
+        "householdSize": 2
+      },
+      "constraints": [
+        {
+          "id": "back-1",
+          "title": "Can't stand for long",
+          "detail": "Lower back aches after 15 minutes at the counter."
+        },
+        {
+          "id": "back-2",
+          "title": "Bending to low ovens",
+          "detail": "Reaching into a low oven or bottom cabinet is painful."
+        },
+        {
+          "id": "back-3",
+          "title": "Lifting heavy pots",
+          "detail": "Avoids carrying full stockpots or cast iron."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Counter-height perching stool",
+          "why": "Lets you prep sitting down at counter height."
+        },
+        {
+          "name": "Slow cooker",
+          "why": "Sits on the counter, so there's no bending to the oven."
+        },
+        {
+          "name": "Countertop air fryer",
+          "why": "Does the oven's job at waist height."
+        }
+      ],
+      "tips": [
+        "Prep sitting down and keep everything you need within arm's reach.",
+        "Fill pots where they'll cook. Use a pitcher to carry the water."
+      ],
+      "recipes": [
+        {
+          "id": "back-slow-chili",
+          "title": "Slow Cooker Turkey Chili",
+          "photo": "https://images.unsplash.com/photo-1638329389022-daef2efb71b3?auto=format&fit=crop&w=800&q=70",
+          "folder": "Dinners",
+          "time": 360,
+          "servings": 6,
+          "ingredients": [
+            "1 lb ground turkey",
+            "1 onion",
+            "1 bell pepper",
+            "2 cans beans",
+            "1 can diced tomatoes",
+            "2 tbsp chili powder",
+            "1 tsp cumin"
+          ],
+          "steps": [
+            {
+              "text": "Brown the turkey in a heavy skillet on the stove.",
+              "timerMinutes": 8
+            },
+            {
+              "text": "Chop the onion and pepper at the counter.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Lift the skillet and pour the turkey into the slow cooker.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Add everything else and cook on low.",
+              "timerMinutes": 360
+            }
+          ],
+          "simplified": {
+            "summary": "Everything goes into the slow cooker raw, and you prep sitting down. No skillet to lift.",
+            "steps": [
+              {
+                "text": "Sit at the counter. Put the slow cooker in front of you.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Add the raw turkey, breaking it up with a wooden spoon.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Add the frozen pepper-and-onion mix, beans, tomatoes and spices.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Stir, cover and cook on low. Go rest.",
+                "timerMinutes": 360
+              },
+              {
+                "text": "Ladle into bowls straight from the cooker.",
+                "timerMinutes": 0
+              }
+            ],
+            "swaps": [
+              {
+                "from": "Browning in a skillet",
+                "to": "Raw into the slow cooker",
+                "why": "No heavy pan to lift or pour"
+              },
+              {
+                "from": "Chopping onion & pepper",
+                "to": "Frozen pepper-onion mix",
+                "why": "Less time on your feet"
+              }
+            ],
+            "prepAhead": [
+              "Keep the slow cooker on the counter, not in a low cupboard"
+            ]
+          }
+        },
+        {
+          "id": "back-airfryer-salmon",
+          "title": "Honey-Garlic Salmon",
+          "photo": "https://images.unsplash.com/photo-1771384552858-feb0574f958d?auto=format&fit=crop&w=800&q=70",
+          "folder": "Dinners",
+          "time": 25,
+          "servings": 2,
+          "ingredients": [
+            "2 salmon fillets",
+            "2 tbsp honey",
+            "1 tbsp soy sauce",
+            "2 garlic cloves",
+            "Green beans"
+          ],
+          "steps": [
+            {
+              "text": "Preheat the oven to 400°F (200°C).",
+              "timerMinutes": 10
+            },
+            {
+              "text": "Mix the honey, soy and minced garlic, then brush over the salmon.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Bend down and put the tray in the oven.",
+              "timerMinutes": 15
+            },
+            {
+              "text": "Steam the green beans on the stove.",
+              "timerMinutes": 6
+            }
+          ],
+          "simplified": {
+            "summary": "The air fryer does the oven's job at waist height, and the beans cook alongside.",
+            "steps": [
+              {
+                "text": "Stir together the honey, soy and jarred garlic.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Brush it onto the salmon and place the salmon in the air-fryer basket with the green beans.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Air fry at 390°F (200°C).",
+                "timerMinutes": 10
+              },
+              {
+                "text": "Serve straight from the basket.",
+                "timerMinutes": 0
+              }
+            ],
+            "swaps": [
+              {
+                "from": "Low oven",
+                "to": "Countertop air fryer",
+                "why": "No bending"
+              },
+              {
+                "from": "Separate pot for beans",
+                "to": "Same basket",
+                "why": "Fewer things to lift and wash"
+              }
+            ],
+            "prepAhead": [
+              "Buy pre-trimmed green beans"
+            ]
+          }
+        },
+        {
+          "id": "back-veg-stirfry",
+          "title": "Seated Veggie Stir-Fry",
+          "photo": "https://images.unsplash.com/photo-1601226809816-b8c32440158a?auto=format&fit=crop&w=800&q=70",
+          "folder": "Quick meals",
+          "time": 20,
+          "servings": 2,
+          "ingredients": [
+            "Broccoli",
+            "Snap peas",
+            "Carrot",
+            "Tofu or chicken",
+            "Stir-fry sauce",
+            "Microwave rice"
+          ],
+          "steps": [
+            {
+              "text": "Chop all the vegetables and protein.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Heat a wok over high heat.",
+              "timerMinutes": 3
+            },
+            {
+              "text": "Stir-fry in batches, tossing the wok.",
+              "timerMinutes": 8
+            },
+            {
+              "text": "Add the sauce and serve over rice.",
+              "timerMinutes": 2
+            }
+          ],
+          "simplified": {
+            "summary": "Uses an electric skillet set up at the table, so you cook sitting down and nothing needs tossing.",
+            "steps": [
+              {
+                "text": "Set the electric skillet on the table and heat it to 375°F.",
+                "timerMinutes": 3
+              },
+              {
+                "text": "Add the pre-cut stir-fry vegetables and pre-cubed tofu.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Stir with a long spoon while seated.",
+                "timerMinutes": 7
+              },
+              {
+                "text": "Pour in the sauce. Microwave the rice pouch.",
+                "timerMinutes": 2
+              }
+            ],
+            "swaps": [
+              {
+                "from": "Wok on the stove",
+                "to": "Electric skillet at the table",
+                "why": "Cook sitting down"
+              },
+              {
+                "from": "Pot of rice",
+                "to": "Microwave rice pouch",
+                "why": "No heavy pot of water"
+              }
+            ],
+            "prepAhead": []
+          }
+        }
+      ],
+      "conditions": [
+        "back-pain"
+      ],
+      "camera": false,
+      "cameraPhoto": "https://images.unsplash.com/photo-1580929753603-10519c6e480a?auto=format&fit=crop&w=800&q=70"
+    },
+    {
+      "id": "knee-pain",
+      "label": "Knee Pain",
+      "shortLabel": "Standing & squatting",
+      "onboardingBlurb": "Standing for long, squatting to low cupboards or kneeling is hard.",
+      "persona": {
+        "name": "Dorothy",
+        "age": 70,
+        "bio": "Church potluck legend recovering from a knee replacement. Wants to get back to cooking her family favourites.",
+        "householdSize": 3
+      },
+      "constraints": [
+        {
+          "id": "knee-1",
+          "title": "Can't stand for long",
+          "detail": "Knees swell after 20 minutes on her feet."
+        },
+        {
+          "id": "knee-2",
+          "title": "Squatting to low cupboards",
+          "detail": "Pots and pans are kept in the bottom drawers."
+        },
+        {
+          "id": "knee-3",
+          "title": "Fear of falling",
+          "detail": "Avoids step stools and wet floors."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Anti-fatigue mat",
+          "why": "Cushions your knees while you stand at the stove."
+        },
+        {
+          "name": "Perching stool",
+          "why": "Takes weight off your knees during prep."
+        },
+        {
+          "name": "Slow cooker / Instant Pot",
+          "why": "Hands-off cooking, so you can sit down."
+        }
+      ],
+      "tips": [
+        "Move your most-used pots up to counter height.",
+        "Set timers and sit down between steps. The app will remind you."
+      ],
+      "recipes": [
+        {
+          "id": "knee-beef-stew",
+          "title": "Instant Pot Beef Stew",
+          "photo": "https://images.unsplash.com/photo-1689860892307-7db54ab276ba?auto=format&fit=crop&w=800&q=70",
+          "folder": "Dinners",
+          "time": 60,
+          "servings": 4,
+          "ingredients": [
+            "1.5 lb stew beef",
+            "4 carrots",
+            "3 potatoes",
+            "1 onion",
+            "3 cups beef broth",
+            "2 tbsp tomato paste"
+          ],
+          "steps": [
+            {
+              "text": "Get the Dutch oven from the bottom cupboard.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Brown the beef in batches, standing at the stove.",
+              "timerMinutes": 15
+            },
+            {
+              "text": "Chop the vegetables.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Simmer everything on the stove, stirring often.",
+              "timerMinutes": 120
+            }
+          ],
+          "simplified": {
+            "summary": "The Instant Pot does the work. Prep sitting down, then rest while it pressure-cooks.",
+            "steps": [
+              {
+                "text": "Sit at the counter. Add the beef, the pre-cut stew vegetables and the broth to the Instant Pot.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Stir in the tomato paste from a tube.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Lock the lid and pressure cook on high. Go put your feet up.",
+                "timerMinutes": 35,
+                "watch": {
+                  "kind": "pressure",
+                  "minutes": 8
+                }
+              },
+              {
+                "text": "Natural release.",
+                "timerMinutes": 10
+              },
+              {
+                "text": "Ladle into bowls.",
+                "timerMinutes": 0
+              }
+            ],
+            "swaps": [
+              {
+                "from": "Dutch oven (bottom cupboard)",
+                "to": "Instant Pot kept on the counter",
+                "why": "No squatting"
+              },
+              {
+                "from": "2 hours of stirring",
+                "to": "35 minutes hands-off",
+                "why": "Sit down while it cooks"
+              }
+            ],
+            "prepAhead": [
+              "Buy the pre-cut stew vegetable pack"
+            ]
+          }
+        },
+        {
+          "id": "knee-microwave-salmon",
+          "title": "Steamed Salmon & Greens",
+          "photo": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&q=70",
+          "folder": "Quick meals",
+          "time": 15,
+          "servings": 1,
+          "ingredients": [
+            "1 salmon fillet",
+            "1 cup broccoli florets",
+            "Soy sauce",
+            "Ginger paste",
+            "Rice pouch"
+          ],
+          "steps": [
+            {
+              "text": "Steam the salmon over a pot of simmering water.",
+              "timerMinutes": 12,
+              "watch": {
+                "kind": "boil",
+                "minutes": 7
+              }
+            },
+            {
+              "text": "Cook the rice on the stove.",
+              "timerMinutes": 18
+            }
+          ],
+          "simplified": {
+            "summary": "A complete dinner made in the microwave in about 10 minutes.",
+            "steps": [
+              {
+                "text": "Put the salmon and the broccoli in a microwave-safe dish.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Drizzle with soy sauce and ginger paste. Cover with a vented lid.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Microwave on high.",
+                "timerMinutes": 4
+              },
+              {
+                "text": "Rest while you heat the rice pouch.",
+                "timerMinutes": 2
+              }
+            ],
+            "swaps": [
+              {
+                "from": "Stovetop steaming",
+                "to": "Microwave steaming",
+                "why": "Less standing"
+              },
+              {
+                "from": "Pot of rice",
+                "to": "Rice pouch",
+                "why": "Under 2 minutes"
+              }
+            ],
+            "prepAhead": []
+          }
+        },
+        {
+          "id": "knee-parfait",
+          "title": "Yogurt Berry Parfait",
+          "photo": "https://images.unsplash.com/photo-1778430421258-293163502996?auto=format&fit=crop&w=800&q=70",
+          "folder": "Breakfast",
+          "time": 5,
+          "servings": 1,
+          "ingredients": [
+            "1 cup Greek yogurt",
+            "Berries",
+            "Granola",
+            "Honey"
+          ],
+          "steps": [
+            {
+              "text": "Layer the yogurt, berries and granola in a glass.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Drizzle with honey.",
+              "timerMinutes": 0
+            }
+          ],
+          "simplified": {
+            "summary": "Already simple. Just make it at the table.",
+            "steps": [
+              {
+                "text": "Bring a tray to the table with the yogurt, berries, granola and honey.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Layer them in a bowl while seated.",
+                "timerMinutes": 0
+              }
+            ],
+            "swaps": [],
+            "prepAhead": [
+              "Wash the berries ahead and keep them in a container at eye level in the fridge"
+            ]
+          }
+        }
+      ],
+      "conditions": [
+        "knee-pain"
+      ],
+      "camera": true,
+      "cameraPhoto": "https://images.unsplash.com/photo-1578845425669-b6562f83b11e?auto=format&fit=crop&w=800&q=70"
+    },
+    {
+      "id": "arthritis-back-pain",
+      "label": "Arthritis + Back pain",
+      "shortLabel": "Hands & back",
+      "conditions": [
+        "arthritis",
+        "back-pain"
+      ],
+      "camera": true,
+      "onboardingBlurb": "Gripping, opening jars, bending and lifting are all hard.",
+      "persona": {
+        "name": "Evelyn",
+        "age": 71,
+        "bio": "Retired librarian who hosts her book club for lunch every month. Arthritis in her hands and a sore lower back mean she avoids chopping, jars and heavy pots.",
+        "householdSize": 2
+      },
+      "constraints": [
+        {
+          "id": "combo-1",
+          "title": "Trouble gripping knives and lids",
+          "detail": "Chopping, peeling and twisting jar lids hurt her fingers."
+        },
+        {
+          "id": "combo-2",
+          "title": "Bending to the oven",
+          "detail": "Reaching into a low oven or bottom cupboard strains her lower back."
+        },
+        {
+          "id": "combo-3",
+          "title": "Lifting heavy pots",
+          "detail": "Carrying a full pot of water to the sink is off-limits."
+        },
+        {
+          "id": "combo-4",
+          "title": "Standing for long",
+          "detail": "Her back aches after about 15 minutes at the counter."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Rocker knife",
+          "why": "You rock it instead of sawing, so you need less grip strength."
+        },
+        {
+          "name": "Under-cabinet jar opener",
+          "why": "Twists lids using your arm instead of your fingers."
+        },
+        {
+          "name": "Counter-height perching stool",
+          "why": "Lets you prep sitting down."
+        },
+        {
+          "name": "Countertop air fryer",
+          "why": "Does the oven's job at waist height, so there's no bending."
+        }
+      ],
+      "tips": [
+        "Buy pre-cut vegetables and cartons instead of cans and jars.",
+        "Prep sitting down with everything within arm's reach."
+      ],
+      "recipes": [
+        {
+          "id": "combo-onepot-pasta",
+          "title": "One-Pot Tomato Spinach Pasta",
+          "photo": "https://images.unsplash.com/photo-1788599760377-fb4008792b0a?auto=format&fit=crop&w=800&q=70",
+          "folder": "Dinners",
+          "time": 25,
+          "servings": 2,
+          "ingredients": [
+            "8 oz penne",
+            "1 carton marinara (about 2 cups)",
+            "2 cups water",
+            "2 cups baby spinach",
+            "Pre-grated parmesan"
+          ],
+          "steps": [
+            {
+              "text": "Bring a large pot of salted water to a boil.",
+              "timerMinutes": 0,
+              "watch": {
+                "kind": "boil",
+                "minutes": 10
+              }
+            },
+            {
+              "text": "Open the jar of marinara and warm it in a saucepan.",
+              "timerMinutes": 5
+            },
+            {
+              "text": "Cook the pasta.",
+              "timerMinutes": 11
+            },
+            {
+              "text": "Carry the pot to the sink and drain the pasta.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Stir in the sauce and spinach, then grate parmesan on top.",
+              "timerMinutes": 2
+            }
+          ],
+          "simplified": {
+            "summary": "Everything cooks in one light pan, so there's no heavy pot to drain, no jar to open and no grating.",
+            "steps": [
+              {
+                "text": "Sit at the stove on your perching stool. Put a wide, light two-handled pan on the front burner.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Add the dry pasta, the carton of marinara and 2 cups of water.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Turn the heat to high and bring it to a boil, then cover.",
+                "timerMinutes": 0,
+                "watch": {
+                  "kind": "boil",
+                  "minutes": 6
+                }
+              },
+              {
+                "text": "Simmer, giving it one gentle stir halfway through.",
+                "timerMinutes": 12
+              },
+              {
+                "text": "Drop in the spinach and let it wilt, then shake on the pre-grated parmesan.",
+                "timerMinutes": 2
+              }
+            ],
+            "swaps": [
+              {
+                "from": "Jar of marinara",
+                "to": "Carton or pouch of sauce",
+                "why": "No twisting a tight lid"
+              },
+              {
+                "from": "Boil and drain a big pot",
+                "to": "One light pan, no draining",
+                "why": "No lifting heavy water"
+              },
+              {
+                "from": "Block parmesan",
+                "to": "Pre-grated parmesan",
+                "why": "No grating"
+              }
+            ],
+            "prepAhead": [
+              "Keep the light pan on the stovetop so you don't bend for it"
+            ]
+          }
+        },
+        {
+          "id": "combo-chicken-rice",
+          "title": "Air-Fryer Chicken & Rice",
+          "photo": "https://images.unsplash.com/photo-1788227382148-cb8501f2591c?auto=format&fit=crop&w=800&q=70",
+          "folder": "Dinners",
+          "time": 35,
+          "servings": 2,
+          "ingredients": [
+            "2 boneless chicken thighs",
+            "1 pouch pre-cooked rice",
+            "1 cup frozen peas",
+            "1 tsp paprika",
+            "Garlic powder",
+            "Olive oil spray"
+          ],
+          "steps": [
+            {
+              "text": "Get the casserole dish from the bottom cupboard and preheat the oven to 375°F (190°C).",
+              "timerMinutes": 10
+            },
+            {
+              "text": "Trim and season the chicken.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Bake the chicken over raw rice and broth.",
+              "timerMinutes": 50
+            },
+            {
+              "text": "Lift the heavy dish out of the oven and rest.",
+              "timerMinutes": 5
+            }
+          ],
+          "simplified": {
+            "summary": "The air fryer cooks the chicken at waist height and the rice comes ready-made, so there's no bending, lifting or knife work.",
+            "steps": [
+              {
+                "text": "Sit at the counter. Spray the boneless thighs with oil and shake on the paprika and garlic powder.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Switch on the air fryer at 380°F (195°C) to preheat.",
+                "timerMinutes": 0,
+                "watch": {
+                  "kind": "preheat",
+                  "minutes": 3
+                }
+              },
+              {
+                "text": "Lay the chicken in the air-fryer basket and cook.",
+                "timerMinutes": 18
+              },
+              {
+                "text": "Microwave the rice pouch with the frozen peas in a bowl.",
+                "timerMinutes": 3
+              },
+              {
+                "text": "Let the chicken rest, then serve on the rice.",
+                "timerMinutes": 3
+              }
+            ],
+            "swaps": [
+              {
+                "from": "Oven + heavy casserole dish",
+                "to": "Countertop air fryer",
+                "why": "No bending or lifting"
+              },
+              {
+                "from": "Trimming raw chicken",
+                "to": "Boneless, trimmed thighs",
+                "why": "No knife work"
+              },
+              {
+                "from": "Raw rice",
+                "to": "Pre-cooked rice pouch",
+                "why": "Ready in 3 minutes"
+              }
+            ],
+            "prepAhead": [
+              "Ask the butcher to trim the thighs",
+              "Open rice pouches with spring-loaded scissors"
+            ]
+          }
+        },
+        {
+          "id": "combo-chickpea-salad",
+          "title": "Seated Chickpea Salad",
+          "photo": "https://images.unsplash.com/photo-1688923130941-889a41f4439c?auto=format&fit=crop&w=800&q=70",
+          "folder": "Lunches",
+          "time": 10,
+          "servings": 2,
+          "ingredients": [
+            "1 carton chickpeas",
+            "Cherry tomatoes",
+            "Pre-sliced cucumber",
+            "Pre-crumbled feta",
+            "Greek dressing (squeeze bottle)"
+          ],
+          "steps": [
+            {
+              "text": "Open the can of chickpeas, then drain and rinse them.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Chop the tomatoes and cucumber at the counter.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Crumble the feta and whisk the dressing.",
+              "timerMinutes": 0
+            },
+            {
+              "text": "Toss everything together.",
+              "timerMinutes": 0
+            }
+          ],
+          "simplified": {
+            "summary": "A no-cook lunch you can make sitting at the table, with no can opener, knife or whisk.",
+            "steps": [
+              {
+                "text": "Bring a light bowl and the ingredients to the table on a tray.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Pour in the chickpeas from the carton.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Add the whole cherry tomatoes, sliced cucumber and crumbled feta.",
+                "timerMinutes": 0
+              },
+              {
+                "text": "Squeeze on the dressing and stir gently with a fat-handled spoon.",
+                "timerMinutes": 0
+              }
+            ],
+            "swaps": [
+              {
+                "from": "Canned chickpeas",
+                "to": "Carton chickpeas",
+                "why": "No can opener"
+              },
+              {
+                "from": "Chopping vegetables",
+                "to": "Whole cherry tomatoes + pre-sliced cucumber",
+                "why": "No knife work"
+              },
+              {
+                "from": "Whisked dressing",
+                "to": "Squeeze-bottle dressing",
+                "why": "No whisking or twisting"
+              }
+            ],
+            "prepAhead": []
+          }
+        }
+      ],
+      "cameraPhoto": "https://images.unsplash.com/photo-1580929753603-10519c6e480a?auto=format&fit=crop&w=800&q=70"
+    }
+  ]
+}

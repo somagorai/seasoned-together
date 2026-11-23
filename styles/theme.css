@@ -1,0 +1,174 @@
+/* Seasoned Together — Material 3 theme
+   Brand: primary #EE7801 (orange), secondary #B11B1B (red), tertiary/accent #2E7930 (green).
+   Neutrals are true greys. Type and touch targets are scaled up for older adults. */
+
+:root {
+  /* ---- Color roles (M3 system tokens) ---- */
+  --md-sys-color-primary: #EE7801;
+  --md-sys-color-on-primary: #1C1B1B;            /* dark text keeps contrast on orange */
+  --md-sys-color-primary-container: #FFDCC2;
+  --md-sys-color-on-primary-container: #2E1500;
+  --md-sys-color-inverse-primary: #FFB77C;
+
+  --md-sys-color-secondary: #B11B1B;
+  --md-sys-color-on-secondary: #FFFFFF;
+  --md-sys-color-secondary-container: #FFDAD5;
+  --md-sys-color-on-secondary-container: #410002;
+
+  --md-sys-color-tertiary: #2E7930;
+  --md-sys-color-on-tertiary: #FFFFFF;
+  --md-sys-color-tertiary-container: #C8EFC0;
+  --md-sys-color-on-tertiary-container: #002204;
+
+  --md-sys-color-error: #BA1A1A;
+  --md-sys-color-on-error: #FFFFFF;
+  --md-sys-color-error-container: #FFDAD6;
+  --md-sys-color-on-error-container: #410002;
+
+  --md-sys-color-background: #FCFCFC;
+  --md-sys-color-on-background: #1C1B1B;
+  --md-sys-color-surface: #FCFCFC;
+  --md-sys-color-surface-dim: #DCDCDC;
+  --md-sys-color-surface-bright: #FCFCFC;
+  --md-sys-color-surface-container-lowest: #FFFFFF;
+  --md-sys-color-surface-container-low: #F6F6F6;
+  --md-sys-color-surface-container: #F0F0F0;
+  --md-sys-color-surface-container-high: #EAEAEA;
+  --md-sys-color-surface-container-highest: #E4E4E4;
+  --md-sys-color-surface-variant: #E4E4E4;
+  --md-sys-color-on-surface: #1C1B1B;
+  --md-sys-color-on-surface-variant: #474747;
+  --md-sys-color-outline: #757575;
+  --md-sys-color-outline-variant: #C7C7C7;
+  --md-sys-color-inverse-surface: #303030;
+  --md-sys-color-inverse-on-surface: #F2F2F2;
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-shadow: #000000;
+
+  /* Accessibility (WCAG 2.1 AA), measured against #FCFCFC:
+       #EE7801 on white = 2.8:1, which fails both text (4.5) and indicator (3.0) minimums.
+       So the brand orange is used for fills that carry dark text (6.0:1), and a deeper tone of the
+       same hue, #A14E00 (5.7:1), is used for orange text and thin indicators (checkboxes, switches, progress, tabs). */
+  --st-primary-strong: #A14E00;   /* indicators: 5.7:1 (needs 3:1) */
+  --st-primary-text: #7A3A00;     /* orange text: 8.4:1, AAA */
+  --st-tertiary-text: #1F5C22;    /* green text: 7.8:1, AAA */
+  /* Brand colours as borders around light fills; dark text on them is 14-15:1 (AAA) */
+  --st-primary-fill: #FFE3CC;
+  --st-secondary-fill: #FDECEC;
+
+  /* ---- Typography ---- */
+  --md-ref-typeface-brand: "Roboto", system-ui, sans-serif;
+  --md-ref-typeface-plain: "Roboto", system-ui, sans-serif;
+  --md-icon-font: "Material Symbols Rounded";
+
+  /* Larger reading sizes than M3 defaults */
+  --md-sys-typescale-display-small-size: 2.25rem;
+  --md-sys-typescale-headline-medium-size: 1.875rem;
+  --md-sys-typescale-headline-small-size: 1.625rem;
+  --md-sys-typescale-title-large-size: 1.5rem;
+  --md-sys-typescale-title-medium-size: 1.1875rem;
+  --md-sys-typescale-body-large-size: 1.125rem;
+  --md-sys-typescale-body-large-line-height: 1.6rem;
+  --md-sys-typescale-body-medium-size: 1rem;
+  --md-sys-typescale-body-small-size: 0.9375rem;
+  --md-sys-typescale-label-large-size: 1.0625rem;
+  --md-sys-typescale-label-medium-size: 0.9375rem;
+
+  /* ---- Component tokens ---- */
+  --md-filled-button-container-height: 56px;
+  --md-filled-button-label-text-size: 1.125rem;
+  --md-filled-tonal-button-container-height: 48px;
+  --md-filled-tonal-button-label-text-size: 1.0625rem;
+  --md-outlined-button-container-height: 56px;
+  --md-outlined-button-label-text-size: 1.125rem;
+  --md-outlined-button-label-text-color: var(--md-sys-color-on-surface);
+  --md-outlined-button-outline-color: var(--md-sys-color-outline);
+  --md-text-button-container-height: 48px;
+  --md-text-button-label-text-size: 1.0625rem;
+  --md-text-button-label-text-color: var(--st-primary-text);
+  --md-text-button-icon-color: var(--st-primary-text);
+  --md-filled-button-container-shape: 28px;
+  /* Primary buttons: light orange fill, orange border (styles/app.css), near-black label = 14:1 */
+  --md-filled-button-container-color: var(--st-primary-fill);
+  --md-filled-button-label-text-color: var(--md-sys-color-on-surface);
+  --md-filled-button-hover-label-text-color: var(--md-sys-color-on-surface);
+  --md-filled-button-focus-label-text-color: var(--md-sys-color-on-surface);
+  --md-filled-button-pressed-label-text-color: var(--md-sys-color-on-surface);
+  --md-filled-button-icon-color: var(--md-sys-color-on-surface);
+  --md-filled-button-hover-icon-color: var(--md-sys-color-on-surface);
+  --md-filled-button-focus-icon-color: var(--md-sys-color-on-surface);
+  --md-filled-button-pressed-icon-color: var(--md-sys-color-on-surface);
+  --md-filled-button-hover-state-layer-color: var(--md-sys-color-primary);
+  --md-filled-button-pressed-state-layer-color: var(--md-sys-color-primary);
+  --md-filled-button-container-elevation: 0;
+  --md-filled-button-hover-container-elevation: 1;
+  --md-filled-icon-button-container-color: var(--st-primary-fill);
+  --md-filled-icon-button-icon-color: var(--md-sys-color-on-surface);
+  --md-outlined-button-icon-color: var(--md-sys-color-on-surface);
+  --md-assist-chip-icon-color: var(--st-primary-text);
+  --md-assist-chip-outline-color: var(--md-sys-color-outline);
+
+  --md-outlined-text-field-input-text-size: 1.125rem;
+  --md-outlined-text-field-label-text-size: 1.0625rem;
+  --md-outlined-text-field-focus-outline-color: var(--md-sys-color-tertiary);
+  --md-outlined-text-field-focus-label-text-color: var(--md-sys-color-tertiary);
+  --md-outlined-text-field-caret-color: var(--md-sys-color-tertiary);
+  --md-outlined-text-field-container-shape: 12px;
+
+  --md-filter-chip-container-height: 40px;
+  --md-filter-chip-label-text-size: 1rem;
+  --md-assist-chip-container-height: 36px;
+  --md-assist-chip-label-text-size: 0.9375rem;
+
+  --md-list-item-label-text-size: 1.125rem;
+  --md-list-item-supporting-text-size: 0.9375rem;
+  --md-list-item-two-line-container-height: 72px;
+  --md-list-item-leading-icon-size: 28px;
+
+  --md-primary-tab-label-text-size: 1.0625rem;
+  --md-primary-tab-container-height: 52px;
+  --md-primary-tab-active-indicator-color: var(--st-primary-strong);
+  --md-primary-tab-active-indicator-height: 4px;
+  --md-primary-tab-active-label-text-color: var(--md-sys-color-on-surface);
+  --md-primary-tab-active-icon-color: var(--md-sys-color-on-surface);
+  --md-primary-tab-active-focus-label-text-color: var(--md-sys-color-on-surface);
+  --md-primary-tab-active-hover-label-text-color: var(--md-sys-color-on-surface);
+  --md-primary-tab-active-pressed-label-text-color: var(--md-sys-color-on-surface);
+
+  /* Indicators in the accessible orange tone, white marks on top (5.7:1) */
+  --md-checkbox-selected-container-color: var(--st-primary-strong);
+  --md-checkbox-selected-hover-container-color: var(--st-primary-strong);
+  --md-checkbox-selected-focus-container-color: var(--st-primary-strong);
+  --md-checkbox-selected-pressed-container-color: var(--st-primary-strong);
+  --md-checkbox-selected-icon-color: #FFFFFF;
+  --md-checkbox-selected-hover-icon-color: #FFFFFF;
+  --md-checkbox-selected-focus-icon-color: #FFFFFF;
+  --md-checkbox-selected-pressed-icon-color: #FFFFFF;
+  --md-checkbox-outline-color: var(--md-sys-color-on-surface-variant);
+  --md-switch-selected-track-color: var(--st-primary-strong);
+  --md-switch-selected-hover-track-color: var(--st-primary-strong);
+  --md-switch-selected-focus-track-color: var(--st-primary-strong);
+  --md-switch-selected-pressed-track-color: var(--st-primary-strong);
+  --md-switch-selected-handle-color: #FFFFFF;
+  --md-switch-selected-hover-handle-color: #FFFFFF;
+  --md-switch-selected-focus-handle-color: #FFFFFF;
+  --md-switch-selected-pressed-handle-color: #FFFFFF;
+  --md-switch-selected-icon-color: var(--st-primary-strong);
+  --md-linear-progress-active-indicator-color: var(--st-primary-strong);
+  --md-linear-progress-track-color: var(--md-sys-color-surface-container-highest);
+  --md-circular-progress-active-indicator-color: var(--st-primary-strong);
+  --md-filter-chip-selected-container-color: var(--md-sys-color-primary-container);
+  --md-filter-chip-selected-label-text-color: var(--md-sys-color-on-primary-container);
+  --md-filter-chip-selected-leading-icon-color: var(--md-sys-color-on-primary-container);
+  --md-filter-chip-outline-color: var(--md-sys-color-outline);
+  --md-focus-ring-color: var(--md-sys-color-secondary);
+  --md-focus-ring-width: 3px;
+
+  --md-checkbox-container-size: 22px;
+  --md-checkbox-icon-size: 20px;
+  --md-dialog-headline-size: 1.5rem;
+  --md-dialog-supporting-text-size: 1.0625rem;
+  --md-linear-progress-track-height: 8px;
+  --md-linear-progress-active-indicator-height: 8px;
+  --md-linear-progress-track-shape: 4px;
+}

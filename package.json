@@ -1,0 +1,15 @@
+{
+  "name": "seasoned-together",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "description": "Seasoned Together clickable prototype (Material Web / M3)",
+  "scripts": {
+    "vendor": "esbuild vendor-entry.js --bundle --format=esm --minify --outfile=vendor/material-web.js",
+    "start": "npx -y serve -l 8137 ."
+  },
+  "devDependencies": {
+    "@material/web": "^2.2.0",
+    "esbuild": "^0.24.0"
+  }
+}

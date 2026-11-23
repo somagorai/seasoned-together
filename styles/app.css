@@ -1,0 +1,226 @@
+/* Seasoned Together — layout only.
+   Components come from Material Web (md-*). This file positions them and builds the few
+   surfaces Material Web doesn't ship (cards, top/nav bars, snackbar), using M3 tokens only. */
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: var(--md-ref-typeface-plain);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: 1.5;
+  color: var(--md-sys-color-on-background);
+  background: var(--md-sys-color-surface-container-high);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, p { margin: 0; }
+img { display: block; max-width: 100%; }
+md-icon { flex: none; }
+.muted { color: var(--md-sys-color-on-surface-variant); }
+
+/* ---------- Device frame (desktop) / full screen (phone) ---------- */
+.stage { min-height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 24px 12px; }
+.device {
+  position: relative; width: 400px; height: min(860px, calc(100vh - 72px)); min-height: 640px;
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--md-sys-color-surface); border-radius: 40px;
+  box-shadow: 0 0 0 10px #1C1B1B, 0 24px 60px rgb(0 0 0 / .25);
+}
+@media (max-width: 480px) {
+  .stage { padding: 0; }
+  .device { width: 100%; height: 100dvh; min-height: 0; border-radius: 0; box-shadow: none; }
+}
+
+.screen { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 8px 20px 28px; }
+.screen.flush { padding: 0; }
+.screen > .page { animation: enter .2s ease-out; }
+@keyframes enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Spacing helpers ---------- */
+.stack > * + * { margin-top: 16px; }
+.stack-sm > * + * { margin-top: 8px; }
+.stack-lg > * + * { margin-top: 28px; }
+.row { display: flex; align-items: center; gap: 12px; }
+.spread { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.grow { flex: 1; min-width: 0; }
+.full { width: 100%; }
+.center { text-align: center; }
+
+/* ---------- Top app bar ---------- */
+.top-bar { position: sticky; top: -8px; z-index: 2; display: flex; align-items: center; gap: 4px; min-height: 64px; margin: -8px -20px 8px; padding: 8px 8px 0; background: var(--md-sys-color-surface); }
+.top-bar h1 { flex: 1; }
+.top-bar .spacer { width: 48px; }
+
+/* ---------- Cards (M3 elevated / filled / outlined) ---------- */
+.card { position: relative; display: block; border-radius: 16px; padding: 16px; background: var(--md-sys-color-surface-container-low); --md-elevation-level: 1; }
+.card.filled { background: var(--md-sys-color-surface-container-highest); --md-elevation-level: 0; }
+.card.outlined { background: var(--md-sys-color-surface); border: 1px solid var(--md-sys-color-outline-variant); --md-elevation-level: 0; }
+.card.tertiary { background: var(--md-sys-color-tertiary-container); color: var(--md-sys-color-on-tertiary-container); --md-elevation-level: 0; }
+.card.primary { background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); --md-elevation-level: 0; }
+button.card { width: 100%; border: 0; text-align: left; font: inherit; color: inherit; cursor: pointer; }
+.card.flush { padding: 0; overflow: hidden; }
+
+/* Big action tiles on Home */
+.tile { display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; min-height: 128px; padding: 20px; border-radius: 24px; }
+.tile md-icon { --md-icon-size: 36px; margin-bottom: auto; }
+.tile.primary { background: var(--st-primary-fill); border: 2px solid var(--md-sys-color-primary); color: var(--md-sys-color-on-surface); }
+.tile.primary md-icon { color: var(--st-primary-text); }
+.tile.secondary { background: var(--st-secondary-fill); border: 2px solid var(--md-sys-color-secondary); color: var(--md-sys-color-on-surface); }
+.tile.secondary md-icon { color: var(--md-sys-color-secondary); }
+
+/* Primary actions: light fill + brand-orange border (see theme.css) */
+md-filled-button { border: 2px solid var(--md-sys-color-primary); border-radius: 30px; }
+md-filled-button[disabled] { border-color: var(--md-sys-color-outline-variant); }
+.mic md-filled-icon-button, .hero-actions md-filled-icon-button { border: 0; }
+md-filled-icon-button { border: 2px solid var(--md-sys-color-primary); border-radius: 50%; }
+
+/* ---------- Photos (no placeholder art — a plain surface until the photo loads) ---------- */
+.photo { position: relative; overflow: hidden; background: var(--md-sys-color-surface-container-high); }
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+.avatar { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; flex: none;
+  background: var(--md-sys-color-tertiary-container); color: var(--md-sys-color-on-tertiary-container); font-size: 1.5rem; font-weight: 500; }
+.avatar.lg { width: 104px; height: 104px; font-size: 2.75rem; }
+.thumb { width: 48px; height: 48px; border-radius: 12px; flex: none; }
+
+/* ---------- Onboarding ---------- */
+.logo-signup.sm { display: block; width: 72px; height: 72px; margin: 0 auto; }
+.progress-steps { display: flex; gap: 6px; }
+.progress-steps span { flex: 1; height: 6px; border-radius: 3px; background: var(--md-sys-color-surface-container-highest); }
+.progress-steps span.on { background: var(--md-sys-color-primary); }
+
+md-list { --md-list-container-color: transparent; padding: 0; }
+.choice-list md-list-item { border-radius: 16px; overflow: hidden; margin-bottom: 8px; background: var(--md-sys-color-surface-container-low); transition: background-color .15s; }
+.choice-list md-list-item[data-selected] { background: var(--md-sys-color-primary-container); }
+.choice-list md-checkbox { pointer-events: none; }
+
+.mic { display: grid; place-items: center; margin: 8px auto; }
+.mic md-filled-icon-button { --md-filled-icon-button-container-width: 96px; --md-filled-icon-button-container-height: 96px; --md-filled-icon-button-icon-size: 44px; --md-filled-icon-button-container-color: var(--md-sys-color-secondary); --md-filled-icon-button-icon-color: var(--md-sys-color-on-secondary); }
+.mic.listening md-filled-icon-button { animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { transform: scale(1.08); } }
+
+/* ---------- Lists, chips ---------- */
+md-chip-set { gap: 8px; }
+.chips-scroll { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.chips-scroll::-webkit-scrollbar { display: none; }
+.meta-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Carousel */
+.carousel { display: flex; gap: 12px; overflow-x: auto; margin: 0 -20px; padding: 2px 20px 8px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.carousel::-webkit-scrollbar { display: none; }
+.carousel .card { flex: none; width: 196px; scroll-snap-align: start; }
+.carousel .photo { height: 120px; }
+.carousel .body { padding: 12px 14px 14px; }
+
+/* Recipe rows */
+.recipe-row { display: flex; align-items: stretch; }
+.recipe-row > button { flex: 1; display: flex; gap: 14px; align-items: stretch; padding: 0; border: 0; background: none; font: inherit; color: inherit; text-align: left; cursor: pointer; position: relative; }
+.recipe-row .photo { width: 104px; min-height: 104px; flex: none; }
+.recipe-row .body { padding: 12px 0; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+.recipe-row .pick { display: grid; place-items: center; width: 64px; flex: none; }
+
+/* Recipe detail */
+.hero { position: relative; height: 260px; }
+.hero .photo { position: absolute; inset: 0; }
+.hero-actions { position: absolute; inset: 16px 16px auto; display: flex; justify-content: space-between; z-index: 1; }
+.hero-actions md-filled-icon-button { --md-filled-icon-button-container-color: var(--md-sys-color-surface); --md-filled-icon-button-icon-color: var(--md-sys-color-on-surface); }
+.sheet { position: relative; margin-top: -24px; border-radius: 28px 28px 0 0; background: var(--md-sys-color-surface); padding: 24px 20px 28px; }
+.swap { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; padding: 12px 0; }
+.swap + .swap { border-top: 1px solid var(--md-sys-color-outline-variant); }
+.swap .from { color: var(--md-sys-color-on-surface-variant); text-decoration: line-through; }
+.swap .why { grid-column: 1 / -1; color: var(--st-tertiary-text); }
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 10px 0; }
+.steps li::before { content: counter(step); width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--md-sys-color-on-surface); color: var(--md-sys-color-surface); font-weight: 500; }
+
+.sticky-cta { position: sticky; bottom: -28px; margin: 8px -20px -28px; padding: 12px 20px 16px; background: var(--md-sys-color-surface); border-top: 1px solid var(--md-sys-color-outline-variant); z-index: 2; }
+
+/* ---------- Cooking ---------- */
+.feed { position: relative; height: 220px; border-radius: 20px; overflow: hidden; background: var(--md-sys-color-inverse-surface); }
+.feed .photo { position: absolute; inset: 0; background: transparent; }
+.feed .photo img { filter: saturate(.9) brightness(.92); }
+.feed .hud { position: absolute; inset: 12px 12px auto; display: flex; justify-content: space-between; }
+.feed .status { position: absolute; inset: auto 12px 12px; }
+.live { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 8px; background: rgb(0 0 0 / .62); color: #fff; font-size: .9375rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+.live .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--md-sys-color-secondary); animation: blink 1.2s steps(2) infinite; }
+@keyframes blink { 50% { opacity: .3; } }
+
+.cook-step { display: grid; grid-template-columns: 48px 1fr; gap: 8px; align-items: start; padding: 12px 12px 12px 4px; border-radius: 16px; }
+.cook-step + .cook-step { margin-top: 8px; }
+.cook-step.current { background: var(--md-sys-color-surface-container-low); }
+.cook-step.done .text { color: var(--md-sys-color-on-surface-variant); text-decoration: line-through; }
+.cook-step md-checkbox { margin: 4px auto 0; }
+.timer { font-variant-numeric: tabular-nums; }
+.seen { color: var(--st-tertiary-text); font-weight: 500; display: inline-flex; align-items: center; gap: 4px; }
+.seen md-icon { --md-icon-size: 18px; }
+
+/* ---------- Profile ---------- */
+.profile-head { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+
+/* ---------- Navigation bar (M3) ---------- */
+.nav-bar { flex: none; display: flex; height: 80px; padding: 12px 4px 16px; background: var(--md-sys-color-surface-container); }
+.nav-item { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 0; background: none; padding: 0; font: inherit; color: var(--md-sys-color-on-surface-variant); cursor: pointer; outline: none; }
+.nav-item .indicator { position: relative; display: grid; place-items: center; width: 64px; height: 32px; border-radius: 16px; }
+.nav-item[aria-current="page"] { color: var(--md-sys-color-on-surface); }
+.nav-item[aria-current="page"] .indicator { background: var(--md-sys-color-primary-container); }
+.nav-item[aria-current="page"] md-icon { font-variation-settings: "FILL" 1; }
+.nav-item span.label { font-size: .875rem; font-weight: 500; }
+.nav-item .badge { position: absolute; top: 2px; right: 16px; width: 10px; height: 10px; border-radius: 50%; background: var(--md-sys-color-secondary); }
+
+/* ---------- Snackbar (M3) ---------- */
+.snackbar { position: absolute; left: 12px; right: 12px; bottom: 92px; z-index: 20; display: flex; gap: 12px; align-items: center; min-height: 52px; padding: 12px 16px; border-radius: 8px; background: var(--md-sys-color-inverse-surface); color: var(--md-sys-color-inverse-on-surface); box-shadow: 0 4px 12px rgb(0 0 0 / .25); pointer-events: none; animation: enter .2s ease-out; }
+.snackbar md-icon { color: var(--md-sys-color-inverse-primary); }
+
+.empty { text-align: center; padding: 32px 12px; color: var(--md-sys-color-on-surface-variant); }
+.empty md-icon { --md-icon-size: 40px; }
+.boot-error { padding: 24px; }
+.boot-error code { background: var(--md-sys-color-surface-container-high); padding: 2px 6px; border-radius: 6px; }
+
+/* ---------- Splash ---------- */
+.splash { min-height: 100%; display: flex; flex-direction: column; }
+.splash-hero { position: relative; padding: 32px 24px 0; background: var(--md-sys-color-primary-container); border-radius: 0 0 40px 40px; }
+.splash-photos { display: grid; grid-template-columns: 1.15fr 1fr; grid-template-rows: 112px 112px; gap: 10px; }
+.splash-photos .photo { border-radius: 20px; }
+.splash-photos .photo:first-child { grid-row: span 2; }
+.splash-logo { display: grid; place-items: center; width: 112px; height: 112px; margin: 18px auto -56px; position: relative; z-index: 1;
+  border-radius: 32px; background: var(--md-sys-color-surface); box-shadow: 0 6px 20px rgb(0 0 0 / .14); }
+.splash-logo img { width: 84px; height: 84px; }
+.splash-body { flex: 1; display: flex; flex-direction: column; gap: 20px; padding: 76px 24px 24px; }
+.splash-body h1 { text-align: center; }
+.benefits { display: flex; flex-direction: column; gap: 14px; margin: 4px 0; padding: 0; list-style: none; }
+.benefits li { display: flex; align-items: center; gap: 14px; }
+.benefits .chip-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; flex: none; }
+.benefits .chip-icon.o { background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); }
+.benefits .chip-icon.r { background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container); }
+.benefits .chip-icon.g { background: var(--md-sys-color-tertiary-container); color: var(--md-sys-color-on-tertiary-container); }
+.splash-actions { margin-top: auto; }
+
+/* ---------- Timer card & rings ---------- */
+/* md-circular-progress draws only the active arc, so a matching track is drawn behind it:
+   the arc sits 4px inside the element and is (size - 8px) * width / 100 thick. */
+.ring { --ring-size: 40px; --ring-w: 12; position: relative; display: grid; place-items: center; flex: none; }
+.ring::before { content: ""; position: absolute; inset: 4px; border-radius: 50%;
+  border: calc((var(--ring-size) - 8px) * var(--ring-w) / 100) solid var(--md-sys-color-surface-container-highest); }
+.ring md-circular-progress { --md-circular-progress-size: var(--ring-size); --md-circular-progress-active-indicator-width: var(--ring-w); }
+
+/* ---------- Camera: the live view is the focus; timers float on it ---------- */
+.screen > .page:has(.cam-page) { height: 100%; }
+.cam-page { display: flex; flex-direction: column; height: 100%; }
+.feed.big { flex: 1; height: auto; min-height: 360px; margin-bottom: 4px; }
+.float-tags { position: absolute; left: 12px; right: 12px; bottom: 12px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.float-tag { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 10px; border-radius: 20px;
+  background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); box-shadow: 0 2px 8px rgb(0 0 0 / .3);
+  font-size: 1.125rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+.float-tag md-icon { --md-icon-size: 22px; color: var(--st-primary-text); }
+.float-tag.done { background: var(--md-sys-color-secondary); color: var(--md-sys-color-on-secondary); }
+.float-tag.done md-icon { color: var(--md-sys-color-on-secondary); }
+
+/* Compact one-line timer (Android clock style) */
+.timer-row { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 4px 4px 4px 6px; border-radius: 26px; background: var(--md-sys-color-surface-container-high); }
+.timer-row .time { font-size: 1.5rem; font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+.timer-row .timer-label { color: var(--md-sys-color-on-surface-variant); }
+.timer-row.running .time { color: var(--st-primary-text); }
+.timer-row.done { background: var(--md-sys-color-secondary-container); }
+.timer-row.done .time, .timer-row.done .timer-label { color: var(--md-sys-color-on-secondary-container); font-weight: 500; }
+.timer-row.done .ring::before { border-color: var(--md-sys-color-surface); }
+.timer-row md-text-button { --md-text-button-container-height: 44px; min-width: 0; }
+.timer-row md-filled-button { --md-filled-button-container-height: 44px; }
