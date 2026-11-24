@@ -76,7 +76,9 @@ Other combinations (for example Arthritis + Knee) use the closest scenario and a
 
 **Navigation.** Home · Recipes · **Camera** · Add · Profile. The Camera tab appears only when a camera is linked (Evelyn and Dorothy by default, or anyone who links one in Profile).
 
-**Cooking works the same for everyone.** **Start cooking** opens the step checklist, with one-line timers (▶ start, +1:00, ■ stop, red **Done** at zero; modelled on the Android clock). **Cooking in progress** (on Home and Recipes) goes straight to the cooking steps. While something is cooking, the **Recipes** tab opens that dish's recipe: simplified if they named a pain point, otherwise the original. Its back arrow leads to the full list.
+**Cooking works the same for everyone.** **Start cooking** opens the step checklist, with one-line timers (▶ start, +1:00, ■ stop, red **Done** at zero; modelled on the Android clock). **Cooking in progress** (on Home and Recipes) goes straight to the cooking steps. While something is cooking, the **Recipes** tab (from any tab, Camera included) goes straight to the cooking steps; there is no "Continue cooking" page.
+
+**Tabs keep their place.** Each bottom tab remembers what the user was doing there (the open recipe, original/simplified, scroll position, a half-typed recipe in Add), so switching tabs and back never loses it. Tapping the tab you're already on goes to its top (for Recipes while cooking: the steps, then the list).
 
 **Only the Camera tab is extra.** When nothing is cooking, it lists the recipes, so people can start one right there and stay on the camera. It shows just the live view of the scenario's stove (`cameraPhoto` in the JSON), with running timers as small floating tags such as **"Boiling: 10 min"**. Behind the scenes, the camera works the same checklist:
 - **Untimed steps:** it ticks them when it "sees" them done.

@@ -23,6 +23,10 @@ document.addEventListener("input", (e) => {
       (state.folder === "All" || r.folder === state.folder) &&
       (!q || r.title.toLowerCase().includes(q) || r.ingredients.some((i) => i.toLowerCase().includes(q))));
     document.getElementById("recipe-list").innerHTML = list.length ? list.map(recipeRow).join("") : emptyRecipes();
+  } else if (id === "url") {
+    state.add.url = e.target.value;
+  } else if (id && id.startsWith("d-")) {
+    captureDraft();
   } else if (id === "otherText") {
     state.onboarding.text = e.target.value;
     refreshNeeds();

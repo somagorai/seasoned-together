@@ -71,7 +71,7 @@ export function otherMatchSummary() {
 }
 
 export function navBar(active) {
-  const item = (id, label, name) => `<button class="nav-item" data-action="${id === "recipes" ? "navRecipes" : "nav"}" data-to="${id}" ${active === id ? 'aria-current="page"' : ""}>
+  const item = (id, label, name) => `<button class="nav-item" data-action="tab" data-to="${id}" ${active === id ? 'aria-current="page"' : ""}>
       <span class="indicator"><md-ripple></md-ripple>${icon(name)}</span>
       <span class="label">${label}</span>
       ${id === "camera" && state.session ? '<span class="badge" aria-label="Cooking in progress"></span>' : ""}
@@ -332,7 +332,7 @@ export const views = {
         <p class="md-typescale-title-medium">${esc(a.busy)}…</p><p class="md-typescale-body-medium muted">Simplifying it for ${esc(conditionsLabel())}</p></div>`;
     } else if (a.source === "web") {
       body = `<div class="stack">
-        <md-outlined-text-field id="url" class="full" type="url" label="Recipe website link" placeholder="https://…">${icon("link", 'slot="leading-icon"')}</md-outlined-text-field>
+        <md-outlined-text-field id="url" value="${esc(a.url || "")}" class="full" type="url" label="Recipe website link" placeholder="https://…">${icon("link", 'slot="leading-icon"')}</md-outlined-text-field>
         <md-filled-button class="full" data-action="importWeb">Import recipe</md-filled-button></div>`;
     } else if (a.source === "video") {
       body = `<div class="stack">

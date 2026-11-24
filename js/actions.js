@@ -5,7 +5,7 @@ import {
   effectiveConditions, matchConditions, freshOnboarding, freshAdd,
 } from "./store.js";
 import { snackbar, confirmDialog, formDialog } from "./ui.js";
-import { go, rerender, currentView } from "./router.js";
+import { go, goTab, rerender, currentView } from "./router.js";
 import { startSession, endSession, toggleStep, startTimer, stopTimer, addMinute, currentStep } from "./cooking.js";
 import { otherMatchSummary } from "./views.js";
 import { listen } from "./voice.js";
@@ -15,6 +15,8 @@ const $ = (id) => document.getElementById(id);
 export const actions = {
   // ----- Navigation -----
   nav({ to }) { go(to); },
+  /** Bottom bar: each tab keeps its place (see router.goTab). */
+  tab({ to }) { captureDraft(); goTab(to); },
   restart() { resetAll(); go("welcome"); },
 
   // ----- Onboarding -----
@@ -71,14 +73,6 @@ export const actions = {
   openRecipe({ id }) { state.currentRecipe = id; state.detailMode = "simplified"; go("recipe"); },
   /** "Cooking in progress": straight to the cooking steps. */
   resumeCooking() { go(state.session?.recording ? "camera" : "cook"); },
-  /** Recipes tab: while something is cooking, show that dish's recipe (simplified if they named a pain point). */
-  navRecipes() {
-    const s = state.session;
-    if (!s || s.recording || !s.items.length) return go("recipes");
-    state.currentRecipe = (currentStep() || { item: s.items[0] }).item.id;
-    state.detailMode = state.constraints.length ? "simplified" : "original";
-    go("recipe");
-  },
   /** Start a recipe from the Camera tab and stay on the camera. */
   cookFromCamera({ id }) {
     state.detailMode = "simplified";
